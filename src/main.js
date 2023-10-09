@@ -4,11 +4,11 @@ import App from './App.vue'
 import router from './router'
 import * as bootstrap from 'bootstrap'
 import '/node_modules/bootstrap/dist/css/bootstrap.css'
-import '/node_modules/bootstrap/dist/js/bootstrap.bundle.js'
+import '/node_modules/bootstrap/dist/js/bootstrap'
 
 const app = createApp(App)
-app.use(createPinia())
-
+const pinia = createPinia()
+app.use(pinia)
 app.use(router)
 app.use(bootstrap)
 app.mount('#app')

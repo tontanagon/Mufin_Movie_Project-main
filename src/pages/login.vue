@@ -2,6 +2,8 @@
 //import { RouterLink, RouterView } from 'vue-router'
 import headermuf from '../views/headermuf.vue'
 import Footer from '../components/footer.vue'
+import { userlogin } from '../store/user'
+const login = userlogin()
 
 </script>
 
@@ -30,7 +32,7 @@ import Footer from '../components/footer.vue'
             </div>
 
             <div class="text-center">
-                <button type="button" class="btn btn-outline-primary btn-block mb-4"><router-link to="/" class="nav-link">Sign in</router-link></button>
+                <button type="button" class="btn btn-outline-primary btn-block mb-4"><router-link to="/" class="nav-link" @click="login.logined()">Sign in</router-link></button>
             </div>
 
             <div class="text-center">
