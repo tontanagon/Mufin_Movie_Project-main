@@ -26,22 +26,22 @@ const listrecomment2 = ref([
 <template>
   <div class="container-fluid">
   <div class="h1 text-center m-3 ">Recommended Movies</div>
-    <div class="row row-cols-1 row-cols-md-4 g-4 m-3">
-  <div class="col-3" v-for="(i,index) in listrecomment1" :key="index">
-    <div class="card h-100" style="max-width: 276px;">
-      <img :src="i.link" class="card-img-top m-3 rounded-4" alt="..." style="max-width: 150px;">
-      <div class="card-body">
-        <div class="card-text">{{ i.year }}</div>
-        <h5 class="card-title">{{ i.name }}</h5>
-        <p class="card-text overflow-auto mb-5">
-          {{ i.score }}<i class="fa-solid fa-star" style="color: #F9EEB6;"></i><br>
-          Time : {{ i.time }} <br>
-          Director : {{ i.director }}</p>
+      <div class="row row-cols-1 row-cols-md-4 g-4 m-3">
+    <div class="col-3" v-for="(i,index) in listrecomment1" :key="index">
+      <div class="card h-100" style="max-width: 276px;">
+        <img :src="i.link" class="card-img-top m-3 rounded-4" alt="..." style="max-width: 150px;">
+        <div class="card-body">
+          <div class="card-text">{{ i.year }}</div>
+          <h5 class="card-title">{{ i.name }}</h5>
+          <p class="card-text overflow-auto mb-5">
+            {{ i.score }}<i class="fa-solid fa-star" style="color: #F9EEB6;"></i><br>
+            Time : {{ i.time }} <br>
+            Director : {{ i.director }}</p>
+        </div>
+        <a href="#" class="btn btn-dark position-absolute bottom-0 m-3 rounded-pill">Add to cart</a>
       </div>
-      <a href="#" class="btn btn-dark position-absolute bottom-0 m-3 rounded-pill">Add to cart</a>
     </div>
   </div>
-</div>
 <!-- ปุ่ม view all -->
 <p class="text-center p-3" v-if="showPopup">
   <button class="btn btn-dark rounded-pill" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseExample" @click="showPopup = false">

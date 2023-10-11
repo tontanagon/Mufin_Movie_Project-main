@@ -3,18 +3,15 @@
 import { ref } from 'vue'
 import headermuf from '../views/headermuf.vue'
 import Footer from '../components/footer.vue'
-import test from '../components/test.vue'
+import { movie } from '../store/movie'
+const list = ref(movie())
+
 
 const categories = [
-  'action', 'adventure', 'animation', 'comedy', 'drama', 
-  'documentary', 'fantasy', 'horror', 'romantic', 'sicfi', 'thriller'
+  'Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 
+  'Documentary', 'Fantasy', 'Horror', 'Romance', 'SciFi', 'Thriller'
 ];
 
-const list = ref([{action:{name:'หำดหำด'},adventure:{name:'เพะเั่'},animation:{name:'เั่หำ'},comady:{name:'ๆไำ'},drama:{name:'teพำะเฟำพsfsfe'},documentary:{name:'tesfsfe'},fantasy:{name:'tesfsfe'},horror:{name:'tesfsfe'},romantic:{name:'tesfsfe'},sicfi:{name:'tesfsfe'},thriller:{name:'tesfsfe'}},
-{}
-])
-
-const action = ref([{ชื่อหนังงงงงงง}])
 
 const categoryState = Object.fromEntries(
     categories.map(category => [category, categories.includes(category)])
@@ -30,16 +27,20 @@ const toggleCategory = (category) => {
     console.log(categoryState)
   }
 };
+
+
 </script>
 
 <template>
   <RouterView></RouterView>
-
   <div class="header">
-    <headermuf></headermuf>
+    <headermuf ></headermuf>
   </div>
-  <div class="col-12 text-center">
-    <div class="main m-3 p-3 row gx-1 justify-content-center">
+  <div class="row">
+    <div class="col-2">
+      <div class="row" style=" position: sticky; top: 100px;">
+        <div class="col-2 text-center">
+    <div class="main m-3 p-3 gx-1 justify-content-center">
       <div class="checkboxes">
         <label
           v-for="category in categories"
@@ -60,29 +61,48 @@ const toggleCategory = (category) => {
           {{ category }}
         </label>
       </div>
+      <div style="margin-top:185px ;"></div>
     </div>
-    <div class="col text-center m-5 fs-4">
+  </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="row ">
+        <!--<div class="col text-center m-5 fs-4" >
       <div v-for="category in listcategory" :key="category" style="display: inline;">
-        {{ category }} /
+        {{ category }} / 
       </div>
-    </div>
-    <div v-for="category in categories" :key="category">
-  <div v-for="item in list" :key="item"> 
-    <div v-if="item[category] ">
-      {{ item[category] }}{{ item[category].name }}
-      <div class="card h-100" style="max-width: 276px;">
-        <div class="card-body">
-          <div class="card-text">{{ item[category].name }}</div>
-          <!-- Rest of your card content -->
+    </div>-->
+  <div class="" v-for="(i, index) in list.listmovie" :key="index" >
+    <div v-for="(m, index) in listcategory" :key="index"> 
+      <div  v-if="i.type == m">
+        <div class="card h-100 m-5 shadow" >
+          <img :src="i.img" class="card-img-top m-3 rounded-4 mx-auto" alt="..." style="max-width: 500px;">
+          <div class="card-body">
+            <div class="card-text">{{ i.year }}</div>
+            <h5 class="card-title">{{ i.name }}</h5>
+            <p class="card-text overflow-auto mb-5">
+              {{ i.type }} <br>
+              IMDb : {{ i.imdb }}<i class="fa-solid fa-star" style="color: #F9EEB6;"></i><br>
+              Time: {{ i.time }} <br>
+              Director: {{ i.director }} 
+            </p>
+          </div>
+          <a href="#" class="btn btn-dark position-center bottom-0 m-3 rounded-pill mx-auto">Add to cart</a>
         </div>
-        <a href="#" class="btn btn-dark position-absolute bottom-0 m-3 rounded-pill">Add to cart</a>
       </div>
     </div>
   </div>
-  </div>
+
+</div>
+    </div>
+
+
+
+
+
 </div>
   <Footer></Footer>
-  <test></test>
 </template>
 
 <style scoped>
